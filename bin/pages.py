@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from locators import LoginPageLocators
+from locators import LoginPageLocators, TradingPageLocators
 from credentials import username, password
 
 class BasePage(object):
@@ -23,7 +23,7 @@ class BasePage(object):
     def find_element(self, *args): # A tuple of arguments, for example of the type (By.ID, 'Hola!')
         return self.driver.find_element(*args)
 
-    def submit_to_field(self, *args, information):
+    def submit_to_field(self, information, *args):
         elem = self.find_element(*args)
         elem.send_keys(information)
         elem.submit()
@@ -35,7 +35,8 @@ class BasePage(object):
 class LoginPage(BasePage):
 
     def __init__(self, driver):
-        BasePage.__init__(driver)
+        super(LoginPage, self).__init__(driver)
+        #BasePage.__init__(driver)
         self.url = LoginPageLocators.URL
         self.open_page()
 
@@ -51,7 +52,8 @@ class LoginPage(BasePage):
 class TradingPage(BasePage):
 
     def __init__(self, driver):
-        BasePage.__init__(driver)
+        super(TradingPage, self).__init__(driver)
+        #BasePage.__init__(driver)
         self.url = TradingPageLocators.URL
         self.open_page()
 

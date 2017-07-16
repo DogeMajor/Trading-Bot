@@ -12,7 +12,7 @@ class Trader(object):
 
     def __init__(self, driver):
         self.driver = driver
-        self.login_page = page.LoginPage(self.driver)
+        self.login_page = pages.LoginPage(self.driver)
 
         self.trading_page = None
 
@@ -22,18 +22,18 @@ class Trader(object):
 
 
     def open_trading_page(self):
-        self.login_page.login(username, password)
-        self.trading_page =  page.TradingPage(self.driver)
+        self.login_page.login()
+        self.trading_page =  pages.TradingPage(self.driver)
 
     def logout(self):
         login_page.logout()
 
     def trade(self, action, ticker, amount, price):
         pass
-if '__name__' == '__main__':
 
-    driver = webdriver.Firefox()
-    trader = Trader(driver)
-    trader.open_trading_page()
-    driver.get_screenshot_as_file('../data/login_trader.png')
-    trader.logout()
+
+driver = webdriver.Firefox()
+trader = Trader(driver)
+trader.open_trading_page()
+driver.get_screenshot_as_file('../data/login_trader.png')
+trader.logout()
