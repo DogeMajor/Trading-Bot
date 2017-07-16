@@ -1,5 +1,3 @@
-#!/bin/sh
-
 apt-get update
 apt-get install python-pip -y
 apt-get install python-dev -y
@@ -11,7 +9,6 @@ pip install pandas
 pip install -U scikit-learn
 pip install --upgrade \
 https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.2.1-cp27-none-linux_x86_64.whl
-
 
 apt-get update
 apt-get install firefox -y
