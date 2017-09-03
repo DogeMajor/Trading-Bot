@@ -49,7 +49,7 @@ def to_csv(df, name):
 
 def prepare_directory(dir_):
     try:
-        os.mkdir(dir_)
+        os.makedirs(dir_)
     except OSError:
         pass
 
