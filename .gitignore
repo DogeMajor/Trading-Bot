@@ -93,3 +93,6 @@ opendatakey.txt
 
 # Data
 data/
+
+# Selenium
+bin/credentials.py

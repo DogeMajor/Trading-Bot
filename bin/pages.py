@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import unicode_literals
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -116,7 +117,7 @@ class PortfolioPage(BasePage):
 
     def _extract_ticker_information(self, element):
         ticker_id = element.get_attribute('id')
-        name = re.findall(ur"[^,|' ]+|[,|']", ticker_id)[4]
+        name = re.findall(r"[^,|' ]+|[,|']", ticker_id)[4]
         attributes = element.find_elements(*PortfolioPageLocators.TICKER_ATTRIBUTES)
         quantity = attributes[1].text
         price_paid = attributes[2].text
