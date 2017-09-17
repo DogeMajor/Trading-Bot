@@ -21,7 +21,7 @@ class UI(object):
 
     def trade(self, ticker, action, amount):
         self.trader.open_trading_page()
-        self.trader.trade(self, ticker, action, amount)
+        self.trader.trade(ticker, action, amount)
 
     def __del__(self):
         self.trader.logout()
