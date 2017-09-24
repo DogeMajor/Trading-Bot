@@ -28,10 +28,14 @@ class Trader(object):
     def trade(self, ticker, action, amount):
         self.trading_page.trade(ticker, action, amount)
 
+    def get_price(self, ticker):
+        return self.trading_page.get_price(ticker)
+
     def open_portfolio_page(self):
         self.portfolio_page.open_page()
 
     def get_portfolio(self):
+        self.open_portfolio_page()
         return self.portfolio_page.get_portfolio()
 
 if __name__=='__main__':

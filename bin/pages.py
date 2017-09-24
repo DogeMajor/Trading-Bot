@@ -57,7 +57,7 @@ class LoginPage(BasePage):
     def __init__(self, driver, waiting_time=5):
         super(LoginPage, self).__init__(driver, waiting_time)
         self.url = LoginPageLocators.URL
-        print('login', self.waiting_time)
+        # print('login', self.waiting_time)
 
     def login(self):
         self.enter_to_field(LoginPageLocators.USERNAME, LoginPageLocators.USERNAME_FIELD)
@@ -73,7 +73,7 @@ class TradingPage(BasePage):
     def __init__(self, driver, waiting_time=5):
         super(TradingPage, self).__init__(driver, waiting_time)
         self.url = TradingPageLocators.URL
-        print('trade', self.waiting_time)
+        # print('trade', self.waiting_time)
 
     def _enter_ticker(self, ticker):
         self.enter_to_field(ticker, TradingPageLocators.TICKER_FIELD)
@@ -97,6 +97,15 @@ class TradingPage(BasePage):
         self._select_action(action)
         self._enter_no_of_shares(amount)
         self.click_element_and_wait(self.waiting_time, TradingPageLocators.TRADE_BUTTON)
+
+    def get_price(self, ticker):
+        self._enter_ticker(ticker)
+        price_elem = self.find_element(*TradingPageLocators.PRICE_TEXT)
+        price_text = price_elem.text
+        assert(price_text.startswith('$'))
+        price_without_units = price_text.lstrip('$')
+        trimmed_price_text = price_without_units.rstrip(' /Share')
+        return float(trimmed_price_text)
 
     def logout(self):
         self.driver.get('https://www.wallstreetsurvivor.com/logout')

@@ -17,6 +17,7 @@ class TradingPageLocators(object):
         TICKER_FIELD = (By.ID, 'stock_trade_search_field')
         TICKER_DROPDOWN = (By.XPATH, "//a[@class='btn' and @href]")
         TRADE_MENU = (By.ID, 'menuTradeAction')
+        PRICE_TEXT = (By.CLASS_NAME, 'price')
 
         BUY_BUTTON = (By.XPATH, "//*[@data-menu-option='buy']/div")
         SELL_BUTTON = (By.XPATH, "//*[@data-menu-option='sell']/div")
